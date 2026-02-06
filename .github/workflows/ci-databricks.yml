@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - databricks-asset-bundle/nyc_taxis/**
+      - nyc_taxis/**
 
 jobs:
   ci:
