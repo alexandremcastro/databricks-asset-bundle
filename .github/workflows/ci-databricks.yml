@@ -24,6 +24,3 @@ jobs:
 
       - name: Validar bundle
         run: databricks bundle validate
-
-      - name: Deploy para dev (somente se testes passarem)
-        run: databricks bundle deploy --target dev

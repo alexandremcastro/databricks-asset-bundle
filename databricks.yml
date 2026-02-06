@@ -1,0 +1,21 @@
+bundle:
+  name: "nyc-taxis"
+
+include:
+  - resources/*.yml
+  - resources/*/*.yml
+
+targets:
+  dev:
+    mode: development
+    default: true
+    workspace:
+      host: https://dbc-967be9ac-02da.cloud.databricks.com
+
+  prod:
+    mode: production
+    workspace:
+      host: https://dbc-967be9ac-02da.cloud.databricks.com
+      root_path: /Users/aywzaywz@gmail.com/.bundle/${bundle.name}/${bundle.target}
+    run_as:
+      user_name: aywzaywz@gmail.com
