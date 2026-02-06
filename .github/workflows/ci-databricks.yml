@@ -4,6 +4,8 @@ on:
   pull_request:
     branches:
       - main
+    paths:
+      - databricks-asset-bundle/nyc_taxis/**
 
 jobs:
   ci:
