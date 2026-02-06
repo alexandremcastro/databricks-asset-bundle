@@ -1,14 +1,15 @@
 name: Databricks CI
 
 on:
-  pull_request:
-    branches:
-      - main
-    paths:
-      - databricks-asset-bundle/nyc_taxis/**
+  workflow_run:
+    workflows: ["Databricks CI"]
+    types:
+      - completed
 
 jobs:
-  ci:
+  cd:
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    
     runs-on: ubuntu-latest
 
     steps:
@@ -24,5 +25,5 @@ jobs:
           echo "DATABRICKS_HOST=${{ secrets.DATABRICKS_HOST }}" >> $GITHUB_ENV
           echo "DATABRICKS_TOKEN=${{ secrets.DATABRICKS_TOKEN }}" >> $GITHUB_ENV
 
-      - name: Validar bundle
+      - name: Deploy to Development
         run: databricks bundle validate
