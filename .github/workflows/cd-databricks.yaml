@@ -1,15 +1,14 @@
-name: Databricks CI
+name: Databricks CD
 
 on:
-  workflow_run:
-    workflows: ["Databricks CI"]
-    types:
-      - completed
+  pull_request:
+    branches:
+      - main
+    paths:
+      - nyc_taxis/**
 
 jobs:
-  cd:
-    if: ${{ github.event.workflow_run.conclusion == 'success' }}
-    
+  CD:
     runs-on: ubuntu-latest
 
     steps:
@@ -25,5 +24,5 @@ jobs:
           echo "DATABRICKS_HOST=${{ secrets.DATABRICKS_HOST }}" >> $GITHUB_ENV
           echo "DATABRICKS_TOKEN=${{ secrets.DATABRICKS_TOKEN }}" >> $GITHUB_ENV
 
-      - name: Deploy to Development
-        run: databricks bundle validate
+      - name: Deploy para dev
+        run: databricks bundle deploy --target dev
