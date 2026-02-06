@@ -5,10 +5,10 @@ on:
     branches:
       - main
     paths:
-      - nyc_taxis/**
+      - src/**
 
 jobs:
-  CD:
+  cd:
     runs-on: ubuntu-latest
 
     steps:
