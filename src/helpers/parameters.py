@@ -1,6 +1,6 @@
 def get_catalog(project: str) -> str:
     """
-    Returns the catalog name for the given project.
+    Returns the catalog name for the given projects.
 
     Args:
         project (str): The project identifier.
